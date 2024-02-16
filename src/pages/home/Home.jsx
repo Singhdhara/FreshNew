@@ -6,16 +6,18 @@ import Filter from "../../componant/filter/Filter";
 import Productcard from "../../componant/productcard/Productcard";
 import Testimonial from "../../componant/tesimonial/Testimonial";
 import Track from "../../componant/track/Track";
+import ImageproductSlider from "../../componant/herosection/ImageproductSlider";
 
 function Home() {
   const context = useContext(MyContext);
- 
+
   return (
     <Layout>
+      <ImageproductSlider />
       <Herosection />
       <Filter />
       <Productcard />
-    <Track />
+      <Track />
       <Testimonial />
     </Layout>
   );
