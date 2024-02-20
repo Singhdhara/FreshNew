@@ -27,13 +27,13 @@ function ImageproductSlider() {
   ];
 
   return (
-    <div>
+    <div className=" container mx-auto">
          <h3>
             {" "}
           
          </h3>
          <SimpleImageSlider
-            width={1920}
+            width={1536}
             height={500}
             images={sliderImages}
             showNavs={true}

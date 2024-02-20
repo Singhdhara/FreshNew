@@ -4,9 +4,9 @@ import MyContext from "../../context/data/myContext";
 import Herosection from "../../componant/herosection/Herosection";
 import Filter from "../../componant/filter/Filter";
 import Productcard from "../../componant/productcard/Productcard";
-import Testimonial from "../../componant/tesimonial/Testimonial";
 import Track from "../../componant/track/Track";
 import ImageproductSlider from "../../componant/herosection/ImageproductSlider";
+import Sliders from "../../componant/tesimonial/Sliders";
 
 function Home() {
   const context = useContext(MyContext);
@@ -18,7 +18,7 @@ function Home() {
       <Filter />
       <Productcard />
       <Track />
-      <Testimonial />
+      <Sliders />
     </Layout>
   );
 }

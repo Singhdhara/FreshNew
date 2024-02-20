@@ -210,7 +210,7 @@ function Navbar() {
                       Order
                     </Link>
                     <Link
-                      to={"/admin"}
+                      to={"/daseboard"}
                       className="text-sm font-medium text-gray-700 "
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
