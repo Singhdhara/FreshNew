@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { FaUserTie } from "react-icons/fa";
 import Layout from "../../componant/layout/Layout";
 import myContext from "../../context/data/myContext";
+import DasebordTab from "./DasebordTab";
 function Daseboard() {
   const context = useContext(myContext);
   const { mode } = context;
@@ -124,6 +125,8 @@ function Daseboard() {
             </div>
           </div>
         </div>
+
+        <DasebordTab/>
       </section>
     </Layout>
   );

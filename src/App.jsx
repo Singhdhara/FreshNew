@@ -9,6 +9,8 @@ import Login from "./pages/registration/Login";
 import Sinup from "./pages/registration/Sinup";
 import ProductInfo from "./pages/productInfo/ProductInfo";
 import Daseboard from "./pages/daseboard/Daseboard";
+import AddProduct from "./pages/daseboard/page/AddProduct";
+import UpdateProduct from "./pages/daseboard/page/UpdateProduct";
 
 function App() {
   return (
@@ -19,10 +21,12 @@ function App() {
           <Route path="/order" element={<Order />} />
           <Route path="/*" element={<Nopage />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/login" element= {<Login />} />
-          <Route path="/sinup" element= {<Sinup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/sinup" element={<Sinup />} />
           <Route path="/daseboard" element={<Daseboard />} />
-          <Route path="/productInfo/:id" element= {<ProductInfo />} />
+          <Route path="/addproduct" element={<AddProduct />} />
+          <Route path="/updateproduct" element={<UpdateProduct />} />
+          <Route path="/productInfo/:id" element={<ProductInfo />} />
         </Routes>
       </Router>
     </MyState>
