@@ -33,7 +33,7 @@ function ImageproductSlider() {
           
          </h3>
          <SimpleImageSlider
-            width={1536}
+            width={1920}
             height={500}
             images={sliderImages}
             showNavs={true}
@@ -47,3 +47,8 @@ function ImageproductSlider() {
 }
 
 export default ImageproductSlider;
+
+
+
+
+
