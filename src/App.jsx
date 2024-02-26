@@ -6,11 +6,13 @@ import Nopage from "./pages/nopage/Nopage";
 import Cart from "./pages/cart/Cart";
 import MyState from "./context/data/myState";
 import Login from "./pages/registration/Login";
-import Sinup from "./pages/registration/Sinup";
+import Sinup from "./pages/registration/Signup";
 import ProductInfo from "./pages/productInfo/ProductInfo";
 import Daseboard from "./pages/daseboard/Daseboard";
 import AddProduct from "./pages/daseboard/page/AddProduct";
 import UpdateProduct from "./pages/daseboard/page/UpdateProduct";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -28,6 +30,7 @@ function App() {
           <Route path="/updateproduct" element={<UpdateProduct />} />
           <Route path="/productInfo/:id" element={<ProductInfo />} />
         </Routes>
+        <ToastContainer />
       </Router>
     </MyState>
   );
