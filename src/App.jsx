@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Order from "./pages/order/Order";
 import Nopage from "./pages/nopage/Nopage";
@@ -20,14 +20,30 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/order" element={<Order />} />
+          <Route path="/order" element={
+            <ProtectedRoutes>
+              <Order />
+            </ProtectedRoutes>
+          } />
           <Route path="/*" element={<Nopage />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sinup" element={<Sinup />} />
-          <Route path="/daseboard" element={<Daseboard />} />
-          <Route path="/addproduct" element={<AddProduct />} />
-          <Route path="/updateproduct" element={<UpdateProduct />} />
+          <Route path="/daseboard" element={
+            <ProtectedRoutesForAdmin>
+              <Daseboard />
+            </ProtectedRoutesForAdmin>
+          } />
+          <Route path="/addproduct" element={
+            <ProtectedRoutes>
+              <AddProduct />
+            </ProtectedRoutes>
+          } />
+          <Route path="/updateproduct" element={
+            <ProtectedRoutesForAdmin>
+              <UpdateProduct />
+            </ProtectedRoutesForAdmin>
+          } />
           <Route path="/productInfo/:id" element={<ProductInfo />} />
         </Routes>
         <ToastContainer />
@@ -37,3 +53,25 @@ function App() {
 }
 
 export default App;
+
+
+export const ProtectedRoutes = ({ children }) => {
+  if (localStorage.getItem('currentUser')) {
+    return children
+  }
+  else {
+    return <Navigate to={'/login'}/>
+  }
+}
+
+
+export const ProtectedRoutesForAdmin = ({children}) => {
+  const admin = JSON.parse(localStorage.getItem('user'))
+  console.log(admin.user.email)
+  if (admin.user.email === 'knupadhyay784@gmail.com') {
+    return children
+  }
+  else {
+    return <Navigate to='/login' />
+  }
+}
