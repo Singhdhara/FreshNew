@@ -29,7 +29,7 @@ function Login() {
         theme: "colored",
       });
       window.location.href = "/";
-      setLoading(false);
+      // setLoading(false);
     } catch (error) {
       toast.error("Sigin Failed", {
         position: "top-right",

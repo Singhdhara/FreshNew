@@ -4,14 +4,20 @@ import myContext from "../../context/data/myContext";
 import { BsFillCloudSunFill } from "react-icons/bs";
 import { FiSun } from "react-icons/fi";
 import { Dialog, Transition } from "@headlessui/react";
-import { RxCross2 } from 'react-icons/rx'
-
+import { RxCross2 } from "react-icons/rx";
 
 function Navbar() {
   const context = useState(myContext);
   const { mode, toggleMode } = context;
 
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const logout = () => {
+    localStorage.clear("user");
+    window.location.href = "/login";
+  };
 
   return (
     <div>
@@ -70,7 +76,7 @@ function Navbar() {
                     >
                       All Products
                     </Link>
-                    <div className="flow-root">
+                 {user ?   <div className="flow-root">
                       <Link
                         to={"/order"}
                         style={{ color: mode === "dark" ? "white" : "" }}
@@ -78,26 +84,27 @@ function Navbar() {
                       >
                         Order
                       </Link>
-                    </div>
+                    </div>: ""}
 
-                    <div className="flow-root">
+                  {user?.user.email === "verma@gmail.com" ?  <div className="flow-root">
                       <Link
-                        to={"/admin"}
+                        to={"/dashboard"}
                         className="-m-2 block p-2 font-medium text-gray-900"
                         style={{ color: mode === "dark" ? "white" : "" }}
                       >
                         admin
                       </Link>
-                    </div>
+                    </div> : ""}
 
-                    <div className="flow-root">
+                 {user ? <div className="flow-root">
                       <a
+                        onClick={logout}
                         className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer"
                         style={{ color: mode === "dark" ? "white" : "" }}
                       >
                         Logout
                       </a>
-                    </div>
+                    </div>: ""}
                     <div className="flow-root">
                       <Link
                         to={"/"}
@@ -105,7 +112,7 @@ function Navbar() {
                       >
                         <img
                           className="inline-block w-10 h-10 rounded-full"
-                          src="https://overreacted.io/static/profile-pic-c715447ce38098828758e525a1128b87.jpg"
+                          src="/public/Auther.png"
                           alt="Dan_Abromov"
                         />{" "}
                       </Link>
@@ -115,7 +122,7 @@ function Navbar() {
                   <div className="border-t border-gray-200 px-4 py-6">
                     <a href="#" className="-m-2 flex items-center p-2">
                       <img
-                        src="img/indiaflag.png"
+                        src="https://ecommerce-sk.vercel.app/img/indiaflag.png"
                         alt=""
                         className="block h-auto w-5 flex-shrink-0"
                       />
@@ -172,7 +179,8 @@ function Navbar() {
                     stroke="currentColor"
                     class="w-6 h-6"
                   >
-                    <path stroke-linecap="round"
+                    <path
+                      stroke-linecap="round"
                       stroke-linejoin="round"
                       d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                     />
@@ -202,27 +210,41 @@ function Navbar() {
                     >
                       All Products
                     </Link>
-                    <Link
+                  {user ?  <Link
                       to={"/order"}
                       className="text-sm font-medium text-gray-700 "
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       Order
-                    </Link>
-                    <Link
-                      to={"/daseboard"}
-                      className="text-sm font-medium text-gray-700 "
-                      style={{ color: mode === "dark" ? "white" : "" }}
-                    >
-                      Admin
-                    </Link>
+                    </Link>: ""}
 
-                    <a
-                      className="text-sm font-medium text-gray-700 cursor-pointer  "
-                      style={{ color: mode === "dark" ? "white" : "" }}
-                    >
-                      Logout
-                    </a>
+                    {user?.user?.email === "verma@gmail.com" ? (
+                      <div className="flow-root">
+                        <Link
+                          to={"/dashboard"}
+                          className="-m-2 block p-2 font-medium text-gray-900"
+                          style={{ color: mode === "dark" ? "white" : "" }}
+                        >
+                          admin
+                        </Link>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+
+                    {user ? (
+                      <div className="flow-root">
+                        <a
+                          onClick={logout}
+                          className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer"
+                          style={{ color: mode === "dark" ? "white" : "" }}
+                        >
+                          Logout
+                        </a>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                   </div>
 
                   <div className="hidden lg:ml-8 lg:flex">
@@ -241,7 +263,7 @@ function Navbar() {
                     </a>
                   </div>
                   <div className="hidden lg:ml-8 lg:flex">
-                    <a href="#" className="flex items-center text-gray-700 ">
+                    <a href="/login" className="flex items-center text-gray-700 ">
                       <img
                         className="inline-block w-10 h-10 rounded-full"
                         src={"/public/Auther.png"}
