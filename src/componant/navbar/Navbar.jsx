@@ -221,7 +221,7 @@ function Navbar() {
                     {user?.user?.email === "verma@gmail.com" ? (
                       <div className="flow-root">
                         <Link
-                          to={"/dashboard"}
+                          to={"/daseboard"}
                           className="-m-2 block p-2 font-medium text-gray-900"
                           style={{ color: mode === "dark" ? "white" : "" }}
                         >
