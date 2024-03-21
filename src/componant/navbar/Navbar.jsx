@@ -23,7 +23,7 @@ function Navbar() {
 
   return (
     <div>
-      <div className="bg-white fixed top-0 left-0 right-0 z-50  ">
+      <div className="bg-white fixed top-0 left-0 right-0 z-50">
         {/* Mobile menu */}
         <Transition.Root show={open} as={Fragment}>
           <Dialog

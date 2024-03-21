@@ -43,7 +43,7 @@ function SliderHero() {
     ],
   };
   return (
-    <section className=" w-full h-auto mb-20">
+    <section className=" w-full h-auto pt-[105px] pb-[34px]">
       <div className="container w-full h-auto mx-auto ">
       <Slider {...settings}>
           <div className="product-img">
